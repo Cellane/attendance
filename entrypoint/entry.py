@@ -36,19 +36,12 @@ time.sleep(10)
 # attendance
 driver.get(top_url)
 time.sleep(10)
-iframe = driver.find_element_by_xpath("//iframe[@title='AtkWorkComponent']")
+clock_in_tab = driver.find_element_by_id("publisherAttach09D10000000CJm4")
+clock_in_tab.click()
+iframe = driver.find_element_by_xpath("//iframe[@title='Ts1PushTimeView']")
 driver.switch_to_frame(iframe)
 time.sleep(5)
-try:
-    in_button = driver.find_element_by_xpath("//div[@id='btnStInput']")
-    class_attr = in_button.get_attribute("class")
-    if "pw_btnnst_dis" in class_attr:
-        print("出勤不可")
-    else:
-        print("出勤")
-        in_button.click()
-        time.sleep(10)
-except NoSuchElementException:
-    print("出勤ボタンなし")
+out_button = driver.find_element_by_id("pushStart")
+out_button.click()
 
 driver.quit()
