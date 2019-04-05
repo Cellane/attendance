@@ -1,13 +1,11 @@
 FROM selenium/node-chrome
 
 USER root
-
-RUN apt update -y
-RUN apt install -y python3 python3-pip
-RUN pip3 install --upgrade pip
-RUN pip3 install selenium
-
-# copy cmd
+RUN apt-get -qq update && \
+  apt-get install -y python3 python3-pip && \
+  pip3 install --upgrade pip && \
+  hash -r pip && \
+  pip3 install selenium && \
+  rm -r /var/lib/apt/lists/*
 ADD entrypoint /opt/entrypoint/
-
 USER seluser
