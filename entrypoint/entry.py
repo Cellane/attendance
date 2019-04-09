@@ -78,6 +78,8 @@ attendance_button = driver.find_element_by_id("pushStart")
 print("in/out button found: {}".format(attendance_button))
 
 attendance_button.click()
+driver.implicitly_wait(10)
+time.sleep(10)
 print("in/out button clicked")
 
 driver.quit()

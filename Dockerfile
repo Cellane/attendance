@@ -6,6 +6,6 @@ RUN apt-get -qq update && \
   pip3 install --upgrade pip && \
   hash -r pip && \
   pip3 install selenium && \
-  rm -r /var/lib/apt/lists/*
+  rm -r /var/lib/apt/lists/* /var/cache/apt/*
 ADD entrypoint /opt/entrypoint/
 USER seluser
